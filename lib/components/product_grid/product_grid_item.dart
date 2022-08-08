@@ -4,8 +4,8 @@ import 'package:shop_gerenciamento_estado/app_routes.dart';
 import 'package:shop_gerenciamento_estado/models/cart.dart';
 import 'package:shop_gerenciamento_estado/models/product.dart';
 
-class ProdutctItem extends StatelessWidget {
-  const ProdutctItem({Key? key}) : super(key: key);
+class ProdutctGridItem extends StatelessWidget {
+  const ProdutctGridItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,33 @@ class ProdutctItem extends StatelessWidget {
           // botão comprar
           trailing: IconButton(
             icon: const Icon(Icons.shopping_bag),
-            onPressed: () => cart.addProduct(product, 1),
+            onPressed: () {
+              // retorna o scaffold mais próximo deste local.
+              // neste caso ProductOverviewScreen.
+              // Neste exemplo estamos abrindo o drawer da tela principal
+              //Scaffold.of(context).openDrawer();
+
+              // remove o snackbar anterior
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
+              // mostra o snakbar (mensagem no rodapé da tela)
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('${product.name} adicionado ao carrinho'),
+                  duration: const Duration(seconds: 3),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  action: SnackBarAction(
+                    label: 'DESFAZER',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      cart.removeSingleProduct(product);
+                    },
+                  ),
+                ),
+              );
+
+              cart.addProduct(product, 1);
+            },
             color: Theme.of(context).colorScheme.secondary,
           ),
         ),

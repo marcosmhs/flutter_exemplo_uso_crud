@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_gerenciamento_estado/components/cart_button.dart';
+import 'package:shop_gerenciamento_estado/components/cart/cart_button.dart';
 import 'package:shop_gerenciamento_estado/models/cart.dart';
 import 'package:shop_gerenciamento_estado/models/product.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shop_gerenciamento_estado/components/cart_product_widget.dart';
+import 'package:shop_gerenciamento_estado/components/product_widget.dart';
 import '../models/order.dart';
 
 // statefull porque é necessário controlar se os detalhes do pedido estão aparecendo ou não.
@@ -40,7 +40,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
               // calcula o tamanho para garantir que todos os itens possam ser exibidos
               height: (widget.order.products.length * 85) + 10,
               child: ListView(
-                children: widget.order.products.map((product) => CartProductWidget(cartProduct: product, onlyProductList: true)).toList(),
+                children: widget.order.products.map((product) => ProductWidget(cartProduct: product, onlyProductList: true)).toList(),
               ),
             )
         ],

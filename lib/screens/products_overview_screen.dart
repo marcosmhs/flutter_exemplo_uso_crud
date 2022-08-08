@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_gerenciamento_estado/components/app_drawer.dart';
-import 'package:shop_gerenciamento_estado/components/cart_button.dart';
-import '../components/product_grid.dart';
+import 'package:shop_gerenciamento_estado/components/cart/cart_button.dart';
+import '../components/product_grid/product_grid.dart';
 
 enum FilterOptions { all, onlyFavorites }
 

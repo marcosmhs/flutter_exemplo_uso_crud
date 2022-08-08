@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:shop_gerenciamento_estado/models/cart.dart';
 import 'package:shop_gerenciamento_estado/models/cart_product.dart';
 
-class CartProductWidget extends StatelessWidget {
+class ProductWidget extends StatelessWidget {
   final CartProduct cartProduct;
   final bool onlyProductList;
-  const CartProductWidget({
+  const ProductWidget({
     Key? key,
     required this.cartProduct,
     this.onlyProductList = false,
@@ -32,11 +32,35 @@ class CartProductWidget extends StatelessWidget {
             size: 50,
           ),
         ),
-        onDismissed: (_) => {
+        // método para validar se deve ser feita a ação do onDesmissed, neste caso mensagem de confirmação
+        // para exclusão do produto
+        confirmDismiss: (direction) {
+          return showDialog<bool>(
+            context: context,
+            builder: (ctx) => AlertDialog(
+              title: const Text('Confirmação'),
+              content: Text('Confirma a exclusão de ${cartProduct.productName}'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text('Não'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text(
+                    'Sim',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+        onDismissed: (direction) => {
           Provider.of<Cart>(
             context,
             listen: false,
-          ).removeProduct(cartProduct.productId)
+          ).removeAllProducts(cartProduct.productId)
         },
         child: ProductData(cartProduct: cartProduct),
       );

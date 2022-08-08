@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_gerenciamento_estado/models/cart.dart';
 
-import '../app_routes.dart';
-import 'badge.dart';
+import '../../app_routes.dart';
+import '../badge.dart';
 
 class CartButton extends StatelessWidget {
   const CartButton({Key? key}) : super(key: key);
