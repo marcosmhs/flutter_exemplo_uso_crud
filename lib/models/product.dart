@@ -1,7 +1,18 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
+enum ProductEnum {
+  id,
+  name,
+  description,
+  price,
+  urlImage,
+  isFavorite,
+}
+
 class Product with ChangeNotifier {
-  final String id;
+  late String id;
   final String name;
   final String description;
   final double price;
@@ -15,7 +26,15 @@ class Product with ChangeNotifier {
     required this.price,
     required this.urlImage,
     this.isFavorite = false,
-  });
+  }) {
+    if (id.isEmpty) {
+      id = Product.productNewId;
+    }
+  }
+
+  static String get productNewId {
+    return 'pd${Random().nextDouble().toString()}';
+  }
 
   void toggleFavorite() {
     isFavorite = !isFavorite;

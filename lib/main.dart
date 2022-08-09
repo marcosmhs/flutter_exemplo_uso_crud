@@ -6,9 +6,9 @@ import 'package:shop_gerenciamento_estado/models/product_list.dart';
 import 'package:shop_gerenciamento_estado/my_theme.dart';
 import 'package:shop_gerenciamento_estado/screens/cart_screen.dart';
 import 'package:shop_gerenciamento_estado/screens/orders_screen.dart';
-//import 'package:shop_gerenciamento_estado/providers/counter.dart';
-//import 'package:shop_gerenciamento_estado/screens/counter_page.dart';
 import 'package:shop_gerenciamento_estado/screens/product_detail_screen.dart';
+import 'package:shop_gerenciamento_estado/screens/product_form_screen.dart';
+import 'package:shop_gerenciamento_estado/screens/products_screen.dart';
 import 'package:shop_gerenciamento_estado/screens/products_overview_screen.dart';
 import 'package:shop_gerenciamento_estado/screens/screen_not_found.dart';
 
@@ -39,7 +39,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.home: (ctx) => const ProductsOverviewScreen(),
           AppRoutes.productDetail: (ctx) => const ProductDetailScreen(),
           AppRoutes.cart: (ctx) => const CartScreen(),
-          AppRoutes.orders: (ctx) => const OrdersScreen()
+          AppRoutes.orders: (ctx) => const OrdersScreen(),
+          AppRoutes.products: (ctx) => const ProductsScreen(),
+          AppRoutes.productForm: (ctx) => const ProductFormScreen(),
           //AppRoutes.productDetail: (ctx) => const CounterPage()
         },
         initialRoute: AppRoutes.home,
